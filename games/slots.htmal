@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fruit Classic — Royal Play</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/games.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+
+    <button
+        class="text-button"
+        onclick="location.href='index.html'"
+    >
+        ← VOLVER
+    </button>
+
+    <div class="brand">
+        <div class="brand-name">FRUIT CLASSIC</div>
+    </div>
+
+    <div class="credit-mini">
+        <span>◈</span>
+        <strong id="slotBalance">0</strong>
+    </div>
+
+</header>
+
+<main class="slot-page">
+
+    <div class="slot-title">
+        <span>CLASSIC SERIES</span>
+        <h1>Fruit Classic</h1>
+    </div>
+
+    <section class="slot-machine">
+
+        <div class="machine-top">
+            <span>ROYAL PLAY</span>
+            <strong>FRUIT CLASSIC</strong>
+            <span>7</span>
+        </div>
+
+        <div class="reels" id="reels">
+
+            <div class="reel">
+                <div class="reel-symbol">🍒</div>
+            </div>
+
+            <div class="reel">
+                <div class="reel-symbol">7</div>
+            </div>
+
+            <div class="reel">
+                <div class="reel-symbol">🍋</div>
+            </div>
+
+        </div>
+
+        <div class="payline"></div>
+
+        <div class="slot-status" id="slotStatus">
+            LISTO PARA JUGAR
+        </div>
+
+        <div class="slot-controls">
+
+            <button
+                id="spinButton"
+                class="spin-button"
+                type="button"
+            >
+                GIRAR
+            </button>
+
+            <div class="bet-control">
+
+                <button type="button" id="betMinus">
+                    −
+                </button>
+
+                <div>
+                    <small>APUESTA</small>
+                    <strong id="betValue">2</strong>
+                </div>
+
+                <button type="button" id="betPlus">
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="slot-info">
+
+        <h2>Tabla de premios</h2>
+
+        <div class="paytable-row">
+            <span>🍒 🍒 🍒</span>
+            <strong>1.5×</strong>
+        </div>
+
+        <div class="paytable-row">
+            <span>🍋 🍋 🍋</span>
+            <strong>1.5×</strong>
+        </div>
+
+        <div class="paytable-row">
+            <span>🔔 🔔 🔔</span>
+            <strong>1.5×</strong>
+        </div>
+
+        <div class="paytable-row">
+            <span>7 7 7</span>
+            <strong>1.5×</strong>
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/slots.js"></script>
+
+</body>
+</html>

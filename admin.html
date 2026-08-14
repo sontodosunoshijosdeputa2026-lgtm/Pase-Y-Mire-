@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Administración — Royal Play</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <header class="admin-header">
+
+        <div>
+            <span>ROYAL PLAY</span>
+            <strong>PANEL ADMINISTRATIVO</strong>
+        </div>
+
+        <button id="logoutButton">
+            SALIR
+        </button>
+
+    </header>
+
+    <main class="admin-content">
+
+        <section class="admin-welcome">
+            <span>CONTROL GENERAL</span>
+            <h1>Panel de administración</h1>
+        </section>
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span>USUARIOS</span>
+                <strong id="usersCount">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>CRÉDITOS</span>
+                <strong id="creditsCount">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>JUEGOS</span>
+                <strong id="gamesCount">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>SUBADMINS</span>
+                <strong id="adminsCount">0</strong>
+            </div>
+
+        </section>
+
+        <section class="admin-menu">
+
+            <button>
+                <span>👤</span>
+                <div>
+                    <strong>Usuarios</strong>
+                    <small>Gestionar cuentas</small>
+                </div>
+            </button>
+
+            <button>
+                <span>🛡️</span>
+                <div>
+                    <strong>Subadministradores</strong>
+                    <small>Permisos y acceso</small>
+                </div>
+            </button>
+
+            <button>
+                <span>🎰</span>
+                <div>
+                    <strong>Juegos</strong>
+                    <small>Máquinas desplegadas</small>
+                </div>
+            </button>
+
+            <button>
+                <span>◈</span>
+                <div>
+                    <strong>Créditos</strong>
+                    <small>Flujo de créditos</small>
+                </div>
+            </button>
+
+            <button>
+                <span>📊</span>
+                <div>
+                    <strong>Reportes</strong>
+                    <small>Actividad de la plataforma</small>
+                </div>
+            </button>
+
+            <button>
+                <span>🧾</span>
+                <div>
+                    <strong>Auditoría</strong>
+                    <small>Registro administrativo</small>
+                </div>
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+  </html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Juegos — Royal Play</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/games.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-mark">♠</div>
+
+        <div>
+            <div class="brand-name">ROYAL PLAY</div>
+            <div class="brand-subtitle">JUEGOS</div>
+        </div>
+    </div>
+
+    <button
+        class="login-button"
+        onclick="location.href='../login.html'"
+    >
+        CUENTA
+    </button>
+
+</header>
+
+<main>
+
+    <section class="games-header">
+
+        <span class="hero-label">COLECCIÓN</span>
+
+        <h1>Todos los juegos</h1>
+
+        <p>
+            Elegí una categoría y descubrí la experiencia.
+        </p>
+
+    </section>
+
+    <section class="games-list">
+
+        <article
+            class="large-game-card"
+            onclick="location.href='slots.html'"
+        >
+            <div class="large-game-art slots-art">
+                <span>🎰</span>
+            </div>
+
+            <div class="large-game-info">
+                <span>TRAGAMONEDAS</span>
+                <h2>Slots clásicas</h2>
+                <p>Rodillos, símbolos y combinaciones.</p>
+            </div>
+        </article>
+
+        <article
+            class="large-game-card"
+            onclick="location.href='roulette.html'"
+        >
+            <div class="large-game-art roulette-art">
+                <span>🎡</span>
+            </div>
+
+            <div class="large-game-info">
+                <span>RULETA</span>
+                <h2>Golden Roulette</h2>
+                <p>Experiencia de ruleta animada.</p>
+            </div>
+        </article>
+
+        <article class="large-game-card disabled-game">
+            <div class="large-game-art">
+                <span>🃏</span>
+            </div>
+
+            <div class="large-game-info">
+                <span>PRÓXIMAMENTE</span>
+                <h2>Juegos de cartas</h2>
+                <p>Blackjack y baccarat.</p>
+            </div>
+        </article>
+
+        <article class="large-game-card disabled-game">
+            <div class="large-game-art">
+                <span>🎲</span>
+            </div>
+
+            <div class="large-game-info">
+                <span>PRÓXIMAMENTE</span>
+                <h2>Dados</h2>
+                <p>Nuevos juegos en desarrollo.</p>
+            </div>
+        </article>
+
+    </section>
+
+</main>
+
+</div>
+
+<script src="../js/games.js"></script>
+
+</body>
+</html>

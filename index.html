@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="description"
+        content="Plataforma de juegos con créditos virtuales."
+    >
+
+    <meta name="theme-color" content="#090b12">
+
+    <title>Pase y Mire - Juegos</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         APP
+    ====================================================== -->
+
+    <div id="app">
+
+        <!-- =================================================
+             PANTALLA DE CARGA
+        ================================================== -->
+
+        <section id="loading-screen" class="screen loading-screen">
+
+            <div class="loading-logo">
+                🎰
+            </div>
+
+            <h1>Pase y Mire</h1>
+
+            <p>Cargando juegos...</p>
+
+            <div class="loader"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             APLICACIÓN PRINCIPAL
+        ================================================== -->
+
+        <main id="main-app" class="hidden">
+
+            <!-- =============================================
+                 HEADER
+            ============================================== -->
+
+            <header class="topbar">
+
+                <div class="brand">
+
+                    <div class="brand-icon">
+                        🎰
+                    </div>
+
+                    <div class="brand-text">
+                        <strong>Pase y Mire</strong>
+                        <span>Juegos</span>
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="wallet-button"
+                    class="wallet-button"
+                    type="button"
+                >
+
+                    <span class="wallet-icon">🪙</span>
+
+                    <span id="wallet-balance">
+                        0
+                    </span>
+
+                </button>
+
+            </header>
+
+
+            <!-- =============================================
+                 CONTENIDO
+            ============================================== -->
+
+            <div class="page-content">
+
+
+                <!-- =========================================
+                     BIENVENIDA
+                ========================================== -->
+
+                <section class="welcome-section">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            BIENVENIDO
+                        </span>
+
+                        <h1>
+                            Elegí tu juego
+                        </h1>
+
+                        <p>
+                            Jugá utilizando créditos virtuales.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     DESTACADOS
+                ========================================== -->
+
+                <section class="section-block">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-kicker">
+                                DESTACADOS
+                            </span>
+
+                            <h2>
+                                Juegos destacados
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="featured-games"
+                        class="featured-games"
+                    >
+
+                        <!-- Los juegos se cargan mediante JS -->
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     TODOS LOS JUEGOS
+                ========================================== -->
+
+                <section class="section-block">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-kicker">
+                                CATÁLOGO
+                            </span>
+
+                            <h2>
+                                Todas las tragamonedas
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="games-grid"
+                        class="games-grid"
+                    >
+
+                        <!-- Los juegos se cargan mediante JS -->
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 BARRA INFERIOR
+            ============================================== -->
+
+            <nav class="bottom-nav">
+
+                <button
+                    class="nav-item active"
+                    type="button"
+                    data-section="home"
+                >
+
+                    <span class="nav-icon">
+                        🎰
+                    </span>
+
+                    <span>
+                        Juegos
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    type="button"
+                    data-section="favorites"
+                >
+
+                    <span class="nav-icon">
+                        ❤️
+                    </span>
+
+                    <span>
+                        Favoritos
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    type="button"
+                    data-section="profile"
+                >
+
+                    <span class="nav-icon">
+                        👤
+                    </span>
+
+                    <span>
+                        Perfil
+                    </span>
+
+                </button>
+
+            </nav>
+
+        </main>
+
+
+        <!-- =================================================
+             MODAL DE JUEGO
+        ================================================== -->
+
+        <div
+            id="game-modal"
+            class="modal hidden"
+            aria-hidden="true"
+        >
+
+            <div class="modal-backdrop"></div>
+
+            <div class="modal-card">
+
+                <button
+                    id="close-game-modal"
+                    class="modal-close"
+                    type="button"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+
+
+                <div
+                    id="game-modal-content"
+                    class="game-modal-content"
+                >
+
+                    <!-- Contenido dinámico -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MENSAJES
+        ================================================== -->
+
+        <div
+            id="toast"
+            class="toast"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT DE LA APLICACIÓN
+    ====================================================== -->
+
+    <script
+        src="./js/config.js"
+    ></script>
+
+    <script
+        src="./js/supabase.js"
+    ></script>
+
+    <script
+        src="./js/app.js"
+    ></script>
+
+</body>
+          </html>

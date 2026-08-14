@@ -2,332 +2,341 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
     <meta
         name="description"
-        content="Plataforma de juegos con créditos virtuales."
+        content="Plataforma de juegos de casino con créditos virtuales."
     >
 
-    <meta name="theme-color" content="#090b12">
+    <title>Casino</title>
 
-    <title>Pase y Mire - Juegos</title>
-
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-    <!-- =====================================================
-         APP
-    ====================================================== -->
+    <div class="app">
 
-    <div id="app">
+        <!-- HEADER -->
+        <header class="topbar">
 
-        <!-- =================================================
-             PANTALLA DE CARGA
-        ================================================== -->
+            <div class="brand">
+                <div class="brand-mark">♠</div>
 
-        <section id="loading-screen" class="screen loading-screen">
-
-            <div class="loading-logo">
-                🎰
+                <div>
+                    <div class="brand-name">ROYAL PLAY</div>
+                    <div class="brand-subtitle">CASINO</div>
+                </div>
             </div>
 
-            <h1>Pase y Mire</h1>
+            <button
+                class="login-button"
+                type="button"
+                onclick="location.href='login.html'"
+            >
+                INGRESAR
+            </button>
 
-            <p>Cargando juegos...</p>
-
-            <div class="loader"></div>
-
-        </section>
+        </header>
 
 
-        <!-- =================================================
-             APLICACIÓN PRINCIPAL
-        ================================================== -->
+        <!-- HERO -->
+        <main>
 
-        <main id="main-app" class="hidden">
+            <section class="hero">
 
-            <!-- =============================================
-                 HEADER
-            ============================================== -->
+                <div class="hero-glow"></div>
 
-            <header class="topbar">
+                <div class="hero-content">
 
-                <div class="brand">
+                    <span class="hero-label">
+                        EXPERIENCIA DE JUEGO
+                    </span>
 
-                    <div class="brand-icon">
-                        🎰
+                    <h1>
+                        TU PARTIDA<br>
+                        <span>COMIENZA AQUÍ</span>
+                    </h1>
+
+                    <p>
+                        Explorá juegos clásicos y disfrutá una
+                        experiencia de casino completamente digital.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        type="button"
+                        onclick="location.href='games/index.html'"
+                    >
+                        VER JUEGOS
+                    </button>
+
+                </div>
+
+                <div class="hero-wheel">
+
+                    <div class="wheel-outer">
+                        <div class="wheel-inner">
+                            <span>7</span>
+                        </div>
                     </div>
 
-                    <div class="brand-text">
-                        <strong>Pase y Mire</strong>
-                        <span>Juegos</span>
+                </div>
+
+            </section>
+
+
+            <!-- CREDITOS -->
+            <section class="credit-card">
+
+                <div class="credit-icon">◈</div>
+
+                <div class="credit-info">
+                    <span>CRÉDITOS</span>
+                    <strong id="creditBalance">0</strong>
+                </div>
+
+                <button
+                    class="small-button"
+                    type="button"
+                    onclick="location.href='login.html'"
+                >
+                    INGRESAR
+                </button>
+
+            </section>
+
+
+            <!-- JUEGOS DESTACADOS -->
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            DESTACADOS
+                        </span>
+
+                        <h2>
+                            Juegos populares
+                        </h2>
+                    </div>
+
+                    <button
+                        class="text-button"
+                        type="button"
+                        onclick="location.href='games/index.html'"
+                    >
+                        VER TODOS
+                    </button>
+
+                </div>
+
+
+                <div class="games-grid">
+
+                    <article
+                        class="game-card game-slot"
+                        onclick="location.href='games/slots.html'"
+                    >
+
+                        <div class="game-art">
+
+                            <span class="game-badge">
+                                SLOT
+                            </span>
+
+                            <div class="slot-symbols">
+                                <span>7</span>
+                                <span>♠</span>
+                                <span>7</span>
+                            </div>
+
+                        </div>
+
+                        <div class="game-info">
+                            <h3>Hot 777</h3>
+                            <span>Tragamonedas clásica</span>
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="game-card game-fruit"
+                        onclick="location.href='games/slots.html'"
+                    >
+
+                        <div class="game-art">
+
+                            <span class="game-badge">
+                                SLOT
+                            </span>
+
+                            <div class="fruit-symbols">
+                                <span>🍒</span>
+                                <span>🍋</span>
+                                <span>🍒</span>
+                            </div>
+
+                        </div>
+
+                        <div class="game-info">
+                            <h3>Fruit Classic</h3>
+                            <span>Clásico de frutas</span>
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="game-card game-roulette"
+                        onclick="location.href='games/roulette.html'"
+                    >
+
+                        <div class="game-art">
+
+                            <span class="game-badge">
+                                RULETA
+                            </span>
+
+                            <div class="roulette-mini">
+                                <div class="roulette-center">
+                                    0
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="game-info">
+                            <h3>Golden Roulette</h3>
+                            <span>Ruleta europea</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- CATEGORIAS -->
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            EXPLORAR
+                        </span>
+
+                        <h2>
+                            Categorías
+                        </h2>
                     </div>
 
                 </div>
 
 
-                <button
-                    id="wallet-button"
-                    class="wallet-button"
-                    type="button"
-                >
+                <div class="categories">
 
-                    <span class="wallet-icon">🪙</span>
-
-                    <span id="wallet-balance">
-                        0
-                    </span>
-
-                </button>
-
-            </header>
-
-
-            <!-- =============================================
-                 CONTENIDO
-            ============================================== -->
-
-            <div class="page-content">
-
-
-                <!-- =========================================
-                     BIENVENIDA
-                ========================================== -->
-
-                <section class="welcome-section">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            BIENVENIDO
-                        </span>
-
-                        <h1>
-                            Elegí tu juego
-                        </h1>
-
-                        <p>
-                            Jugá utilizando créditos virtuales.
-                        </p>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =========================================
-                     DESTACADOS
-                ========================================== -->
-
-                <section class="section-block">
-
-                    <div class="section-heading">
-
-                        <div>
-                            <span class="section-kicker">
-                                DESTACADOS
-                            </span>
-
-                            <h2>
-                                Juegos destacados
-                            </h2>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        id="featured-games"
-                        class="featured-games"
+                    <button
+                        type="button"
+                        onclick="location.href='games/slots.html'"
                     >
+                        <span>🎰</span>
+                        <strong>Tragamonedas</strong>
+                    </button>
 
-                        <!-- Los juegos se cargan mediante JS -->
-
-                    </div>
-
-                </section>
-
-
-                <!-- =========================================
-                     TODOS LOS JUEGOS
-                ========================================== -->
-
-                <section class="section-block">
-
-                    <div class="section-heading">
-
-                        <div>
-                            <span class="section-kicker">
-                                CATÁLOGO
-                            </span>
-
-                            <h2>
-                                Todas las tragamonedas
-                            </h2>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        id="games-grid"
-                        class="games-grid"
+                    <button
+                        type="button"
+                        onclick="location.href='games/roulette.html'"
                     >
+                        <span>🎡</span>
+                        <strong>Ruleta</strong>
+                    </button>
 
-                        <!-- Los juegos se cargan mediante JS -->
+                    <button type="button">
+                        <span>🃏</span>
+                        <strong>Cartas</strong>
+                    </button>
 
-                    </div>
+                    <button type="button">
+                        <span>🎲</span>
+                        <strong>Dados</strong>
+                    </button>
 
-                </section>
+                </div>
 
-
-            </div>
-
-
-            <!-- =============================================
-                 BARRA INFERIOR
-            ============================================== -->
-
-            <nav class="bottom-nav">
-
-                <button
-                    class="nav-item active"
-                    type="button"
-                    data-section="home"
-                >
-
-                    <span class="nav-icon">
-                        🎰
-                    </span>
-
-                    <span>
-                        Juegos
-                    </span>
-
-                </button>
+            </section>
 
 
-                <button
-                    class="nav-item"
-                    type="button"
-                    data-section="favorites"
-                >
+            <!-- AVISO -->
+            <section class="responsible-card">
 
-                    <span class="nav-icon">
-                        ❤️
-                    </span>
+                <div class="responsible-icon">
+                    !
+                </div>
 
-                    <span>
-                        Favoritos
-                    </span>
+                <div>
+                    <strong>Juego responsable</strong>
 
-                </button>
+                    <p>
+                        Esta plataforma utiliza créditos virtuales.
+                        Jugá de forma responsable.
+                    </p>
+                </div>
 
-
-                <button
-                    class="nav-item"
-                    type="button"
-                    data-section="profile"
-                >
-
-                    <span class="nav-icon">
-                        👤
-                    </span>
-
-                    <span>
-                        Perfil
-                    </span>
-
-                </button>
-
-            </nav>
+            </section>
 
         </main>
 
 
-        <!-- =================================================
-             MODAL DE JUEGO
-        ================================================== -->
+        <!-- NAVEGACION -->
+        <nav class="bottom-nav">
 
-        <div
-            id="game-modal"
-            class="modal hidden"
-            aria-hidden="true"
-        >
+            <button class="nav-item active" type="button">
+                <span>⌂</span>
+                <small>Inicio</small>
+            </button>
 
-            <div class="modal-backdrop"></div>
+            <button
+                class="nav-item"
+                type="button"
+                onclick="location.href='games/index.html'"
+            >
+                <span>♣</span>
+                <small>Juegos</small>
+            </button>
 
-            <div class="modal-card">
+            <button
+                class="nav-item"
+                type="button"
+                onclick="location.href='login.html'"
+            >
+                <span>◈</span>
+                <small>Billetera</small>
+            </button>
 
-                <button
-                    id="close-game-modal"
-                    class="modal-close"
-                    type="button"
-                    aria-label="Cerrar"
-                >
-                    ×
-                </button>
+            <button
+                class="nav-item"
+                type="button"
+                onclick="location.href='login.html'"
+            >
+                <span>♙</span>
+                <small>Cuenta</small>
+            </button>
 
-
-                <div
-                    id="game-modal-content"
-                    class="game-modal-content"
-                >
-
-                    <!-- Contenido dinámico -->
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             MENSAJES
-        ================================================== -->
-
-        <div
-            id="toast"
-            class="toast"
-            role="status"
-            aria-live="polite"
-        ></div>
+        </nav>
 
     </div>
 
 
-    <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-    ></script>
-
-
-    <!-- =====================================================
-         JAVASCRIPT DE LA APLICACIÓN
-    ====================================================== -->
-
-    <script
-        src="./js/config.js"
-    ></script>
-
-    <script
-        src="./js/supabase.js"
-    ></script>
-
-    <script
-        src="./js/app.js"
-    ></script>
+    <script src="js/app.js"></script>
 
 </body>
-          </html>
+    </html>

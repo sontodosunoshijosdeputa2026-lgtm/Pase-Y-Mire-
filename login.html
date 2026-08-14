@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar — Royal Play</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <section class="auth-card">
+
+        <div class="auth-logo">
+            <div class="auth-logo-mark">♠</div>
+            <h1>ROYAL PLAY</h1>
+            <p>INGRESO A LA PLATAFORMA</p>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input
+                    id="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">CONTRASEÑA</label>
+                <input
+                    id="password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <button class="auth-submit" type="submit">
+                INGRESAR
+            </button>
+
+            <div id="authMessage" class="auth-message"></div>
+
+        </form>
+
+        <div class="auth-footer">
+            ¿No tenés una cuenta?
+            <a href="register.html">Crear cuenta</a>
+        </div>
+
+    </section>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>

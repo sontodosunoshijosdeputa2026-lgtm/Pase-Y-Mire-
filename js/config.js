@@ -1,32 +1,23 @@
 /*
- * ============================================================
- * CONFIGURACIÓN
- * ============================================================
+ * ROYAL PLAY / PASE Y MIRE
+ * Configuración pública del frontend.
  *
- * IMPORTANTE:
- *
- * Nunca colocar aquí:
- * - service_role key
- * - secret key
- * - claves privadas
- *
- * Este archivo se ejecuta en el navegador.
- *
- * Solamente utilizaremos la URL pública del proyecto
- * y la publishable/anon key correspondiente.
- * ============================================================
+ * NUNCA colocar aquí:
+ * - service_role
+ * - secret keys
+ * - contraseñas
  */
 
-window.APP_CONFIG = {
+window.APP_CONFIG = Object.freeze({
+
+    APP_NAME: "Royal Play",
 
     SUPABASE_URL: "",
 
     SUPABASE_PUBLISHABLE_KEY: "",
 
-    APP_NAME: "Pase y Mire",
-
     VIRTUAL_CURRENCY_NAME: "Créditos",
 
     DEFAULT_BALANCE: 0
 
-};
+});

@@ -3,79 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Casino</title>
-    <!-- Incluye aquí tus estilos actuales si los tienes -->
-    <style>
-        body { font-family: sans-serif; }
-        /* Estilos básicos para las secciones */
-        #login-section, #user-panel, #admin-panel { display: none; }
-    </style>
+    <title>Mi Proyecto</title>
+    <!-- Carga de Supabase desde CDN oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <!-- 1. Sección de Login -->
-    <div id="login-section">
-        <div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
-            <h2>🔐 Iniciar Sesión</h2>
-            <form onsubmit="handleLogin(event)">
-                <div style="margin-bottom: 15px;">
-                    <label>Email:</label><br>
-                    <input type="email" id="login-email" required style="width: 100%; padding: 8px; margin-top: 5px;">
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label>Contraseña:</label><br>
-                    <input type="password" id="login-password" required style="width: 100%; padding: 8px; margin-top: 5px;">
-                </div>
-                <button type="submit" style="width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                    Iniciar Sesión
-                </button>
-            </form>
-            <div id="login-message" style="margin-top: 15px; text-align: center;"></div>
-        </div>
+    <div id="app">
+        <h1>Cargando sistema...</h1>
     </div>
 
-    <!-- 2. Panel de Usuario Normal -->
-    <div id="user-panel">
-        <div style="max-width: 600px; margin: 50px auto; padding: 20px;">
-            <h2>👤 Panel de Usuario</h2>
-            <p><strong>Email:</strong> <span id="user-email"></span></p>
-            <p><strong>Balance:</strong> $<span id="user-balance"></span></p>
-            <button onclick="handleLogout()" style="padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                Cerrar Sesión
-            </button>
-        </div>
-    </div>
-
-    <!-- 3. Panel de Administrador -->
-    <div id="admin-panel">
-        <div style="max-width: 1000px; margin: 50px auto; padding: 20px;">
-            <h2>⚙️ Panel de Administrador</h2>
-            <p><strong>Admin:</strong> <span id="admin-email"></span></p>
-            <button onclick="handleLogout()" style="padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 20px;">
-                Cerrar Sesión
-            </button>
-            
-            <h3>📊 Usuarios Registrados</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background: #f0f0f0;">
-                        <th style="padding: 10px; border: 1px solid #ddd;">Email</th>
-                        <th style="padding: 10px; border: 1px solid #ddd;">Balance</th>
-                        <th style="padding: 10px; border: 1px solid #ddd;">Rol</th>
-                        <th style="padding: 10px; border: 1px solid #ddd;">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="users-table-body">
-                    <!-- Se llenará dinámicamente con JS -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Carga de tus scripts -->
     <script src="js/supabase-config.js"></script>
     <script src="js/main.js"></script>
-</body>
-    </html>
     
+    <script>
+        // Verificación rápida de carga
+        window.addEventListener('load', () => {
+            if (typeof supabase === 'undefined') {
+                document.getElementById('app').innerHTML = '<h2 style="color:red;">Error: No se pudo cargar Supabase</h2>';
+            } else {
+                console.log("Sistema cargado correctamente");
+            }
+        });
+    </script>
+</body>
+</html>

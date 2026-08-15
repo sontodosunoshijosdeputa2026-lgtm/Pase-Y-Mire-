@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Ingresar — Royal Play</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/auth.css">
+
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/auth.css"
+    >
+
 </head>
 
 <body>
@@ -15,52 +31,105 @@
     <section class="auth-card">
 
         <div class="auth-logo">
-            <div class="auth-logo-mark">♠</div>
-            <h1>ROYAL PLAY</h1>
-            <p>INGRESO A LA PLATAFORMA</p>
+
+            <div class="auth-logo-mark">
+                ♠
+            </div>
+
+            <h1>
+                ROYAL PLAY
+            </h1>
+
+            <p>
+                INGRESO A LA PLATAFORMA
+            </p>
+
         </div>
+
 
         <form id="loginForm">
 
             <div class="form-group">
-                <label for="email">EMAIL</label>
+
+                <label for="email">
+                    EMAIL
+                </label>
+
                 <input
                     id="email"
                     type="email"
                     autocomplete="email"
                     required
                 >
+
             </div>
 
+
             <div class="form-group">
-                <label for="password">CONTRASEÑA</label>
+
+                <label for="password">
+                    CONTRASEÑA
+                </label>
+
                 <input
                     id="password"
                     type="password"
                     autocomplete="current-password"
                     required
                 >
+
             </div>
 
-            <button class="auth-submit" type="submit">
+
+            <button
+                class="auth-submit"
+                type="submit"
+            >
                 INGRESAR
             </button>
 
-            <div id="authMessage" class="auth-message"></div>
+
+            <div
+                id="authMessage"
+                class="auth-message"
+                aria-live="polite"
+            ></div>
 
         </form>
 
+
         <div class="auth-footer">
+
             ¿No tenés una cuenta?
-            <a href="register.html">Crear cuenta</a>
+
+            <a href="register.html">
+                Crear cuenta
+            </a>
+
         </div>
 
     </section>
 
 </div>
 
+
+<!--
+    ORDEN IMPORTANTE:
+    1. Configuración
+    2. Librería Supabase
+    3. Cliente Supabase
+    4. Lógica de autenticación
+-->
+
 <script src="js/config.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
 <script src="js/auth.js"></script>
 
+
 </body>
-</html>
+
+    </html>

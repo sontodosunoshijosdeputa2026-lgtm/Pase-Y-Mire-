@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -8,10 +10,18 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Administración — Royal Play</title>
+    <title>Royal Play — Administración</title>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
 </head>
 
 <body>
@@ -21,8 +31,17 @@
     <header class="admin-header">
 
         <div>
+
             <span>ROYAL PLAY</span>
-            <strong>PANEL ADMINISTRATIVO</strong>
+
+            <strong>
+                PANEL ADMINISTRATIVO
+            </strong>
+
+            <small id="adminRoleLabel">
+                VERIFICANDO...
+            </small>
+
         </div>
 
         <button id="logoutButton">
@@ -31,85 +50,272 @@
 
     </header>
 
+
     <main class="admin-content">
 
         <section class="admin-welcome">
+
             <span>CONTROL GENERAL</span>
-            <h1>Panel de administración</h1>
+
+            <h1>
+                Centro de administración
+            </h1>
+
+            <p>
+                Gestión de usuarios, créditos
+                y plataforma.
+            </p>
+
         </section>
+
 
         <section class="stats-grid">
 
             <div class="stat-card">
-                <span>USUARIOS</span>
-                <strong id="usersCount">0</strong>
+
+                <span>
+                    USUARIOS
+                </span>
+
+                <strong id="usersCount">
+                    0
+                </strong>
+
             </div>
 
-            <div class="stat-card">
-                <span>CRÉDITOS</span>
-                <strong id="creditsCount">0</strong>
-            </div>
 
             <div class="stat-card">
-                <span>JUEGOS</span>
-                <strong id="gamesCount">0</strong>
+
+                <span>
+                    CRÉDITOS EN USUARIOS
+                </span>
+
+                <strong id="creditsCount">
+                    0
+                </strong>
+
             </div>
 
+
             <div class="stat-card">
-                <span>SUBADMINS</span>
-                <strong id="adminsCount">0</strong>
+
+                <span>
+                    JUEGOS
+                </span>
+
+                <strong id="gamesCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    SUBADMINS
+                </span>
+
+                <strong id="adminsCount">
+                    0
+                </strong>
+
             </div>
 
         </section>
 
+
+        <section class="card admin-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        CRÉDITOS
+                    </span>
+
+                    <h2>
+                        Movimiento de créditos
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label for="targetUserId">
+                        ID DEL USUARIO
+                    </label>
+
+                    <input
+                        id="targetUserId"
+                        type="text"
+                        placeholder="UUID del usuario"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="creditAmount">
+                        CANTIDAD
+                    </label>
+
+                    <input
+                        id="creditAmount"
+                        type="number"
+                        min="1"
+                        step="1"
+                        placeholder="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-actions">
+
+                <button
+                    id="generateCreditsButton"
+                    class="admin-primary"
+                    type="button"
+                >
+                    EMITIR CRÉDITOS
+                </button>
+
+
+                <button
+                    id="transferCreditsButton"
+                    class="admin-secondary"
+                    type="button"
+                >
+                    TRANSFERIR CRÉDITOS
+                </button>
+
+
+                <button
+                    id="createSubAdminButton"
+                    class="admin-secondary"
+                    type="button"
+                    style="display:none"
+                >
+                    CREAR SUB ADMIN
+                </button>
+
+            </div>
+
+
+            <div
+                id="create-user-message"
+                class="admin-message"
+                aria-live="polite"
+            ></div>
+
+        </section>
+
+
+        <section class="card admin-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        CUENTAS
+                    </span>
+
+                    <h2>
+                        Usuarios
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="users-list">
+
+                <p>
+                    Cargando usuarios...
+                </p>
+
+            </div>
+
+        </section>
+
+
         <section class="admin-menu">
 
-            <button>
-                <span>👤</span>
-                <div>
-                    <strong>Usuarios</strong>
-                    <small>Gestionar cuentas</small>
-                </div>
-            </button>
+            <button
+                type="button"
+                onclick="location.href='games/index.html'"
+            >
 
-            <button>
-                <span>🛡️</span>
-                <div>
-                    <strong>Subadministradores</strong>
-                    <small>Permisos y acceso</small>
-                </div>
-            </button>
-
-            <button>
                 <span>🎰</span>
+
                 <div>
-                    <strong>Juegos</strong>
-                    <small>Máquinas desplegadas</small>
+
+                    <strong>
+                        Juegos
+                    </strong>
+
+                    <small>
+                        Máquinas disponibles
+                    </small>
+
                 </div>
+
             </button>
 
-            <button>
-                <span>◈</span>
+
+            <button
+                type="button"
+                id="subadminsMenuButton"
+            >
+
+                <span>🛡️</span>
+
                 <div>
-                    <strong>Créditos</strong>
-                    <small>Flujo de créditos</small>
+
+                    <strong>
+                        Subadministradores
+                    </strong>
+
+                    <small>
+                        Administración de operadores
+                    </small>
+
                 </div>
+
             </button>
 
-            <button>
-                <span>📊</span>
-                <div>
-                    <strong>Reportes</strong>
-                    <small>Actividad de la plataforma</small>
-                </div>
-            </button>
 
-            <button>
+            <button
+                type="button"
+                id="auditMenuButton"
+            >
+
                 <span>🧾</span>
+
                 <div>
-                    <strong>Auditoría</strong>
-                    <small>Registro administrativo</small>
+
+                    <strong>
+                        Auditoría
+                    </strong>
+
+                    <small>
+                        Movimientos administrativos
+                    </small>
+
                 </div>
+
             </button>
 
         </section>
@@ -118,7 +324,17 @@
 
 </div>
 
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="js/config.js"></script>
+
+<script src="js/supabase.js"></script>
+
 <script src="js/admin.js"></script>
 
 </body>
-  </html>
+
+    </html>

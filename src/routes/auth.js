@@ -1,18 +1,16 @@
 import express from 'express';
+import { AuthController } from '../controllers/authController.js';
+import { authMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// TODO: Implementar endpoints de autenticación
-// POST /api/auth/register
-// POST /api/auth/login
-// POST /api/auth/refresh
+// Rutas públicas
+router.post('/register', AuthController.register);
+router.post('/login', AuthController.login);
 
-router.post('/register', (req, res) => {
-  res.json({ message: 'Endpoint de registro - Próximamente' });
-});
-
-router.post('/login', (req, res) => {
-  res.json({ message: 'Endpoint de login - Próximamente' });
-});
+// Rutas protegidas
+router.get('/profile', authMiddleware, AuthController.getProfile);
+router.put('/profile', authMiddleware, AuthController.updateProfile);
+router.post('/change-password', authMiddleware, AuthController.changePassword);
 
 export default router;

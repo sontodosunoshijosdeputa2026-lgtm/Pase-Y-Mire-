@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1 id="status">Cargando...</h1>
+    <script>
+        const { createClient } = supabase
+        const client = createClient(
+            'https://kxazmnouzhlagrogmha.supabase.co',
+            'TU_ANON_KEY_AQUI'
+        )
+        document.getElementById('status').textContent = '✅ Supabase conectado'
+        console.log('Supabase funciona:', client)
+    </script>
+</body>
+</html>

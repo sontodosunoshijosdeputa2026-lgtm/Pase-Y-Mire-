@@ -2,348 +2,80 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <meta
-        name="description"
-        content="Plataforma de juegos de casino con créditos virtuales."
-    >
-
-    <title>Casino</title>
-
-    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Casino</title>
+    <!-- Incluye aquí tus estilos actuales si los tienes -->
+    <style>
+        body { font-family: sans-serif; }
+        /* Estilos básicos para las secciones */
+        #login-section, #user-panel, #admin-panel { display: none; }
+    </style>
 </head>
-
 <body>
 
-    <div class="app">
-
-        <!-- HEADER -->
-        <header class="topbar">
-
-            <div class="brand">
-                <div class="brand-mark">♠</div>
-
-                <div>
-                    <div class="brand-name">ROYAL PLAY</div>
-                    <div class="brand-subtitle">CASINO</div>
+    <!-- 1. Sección de Login -->
+    <div id="login-section">
+        <div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+            <h2>🔐 Iniciar Sesión</h2>
+            <form onsubmit="handleLogin(event)">
+                <div style="margin-bottom: 15px;">
+                    <label>Email:</label><br>
+                    <input type="email" id="login-email" required style="width: 100%; padding: 8px; margin-top: 5px;">
                 </div>
-            </div>
-
-            <button
-                class="login-button"
-                type="button"
-                onclick="location.href='login.html'"
-            >
-                INGRESAR
-            </button>
-
-        </header>
-
-
-        <!-- HERO -->
-        <main>
-
-            <section class="hero">
-
-                <div class="hero-glow"></div>
-
-                <div class="hero-content">
-
-                    <span class="hero-label">
-                        EXPERIENCIA DE JUEGO
-                    </span>
-
-                    <h1>
-                        TU PARTIDA<br>
-                        <span>COMIENZA AQUÍ</span>
-                    </h1>
-
-                    <p>
-                        Explorá juegos clásicos y disfrutá una
-                        experiencia de casino completamente digital.
-                    </p>
-
-                    <button
-                        class="primary-button"
-                        type="button"
-                        onclick="location.href='games/index.html'"
-                    >
-                        VER JUEGOS
-                    </button>
-
+                <div style="margin-bottom: 15px;">
+                    <label>Contraseña:</label><br>
+                    <input type="password" id="login-password" required style="width: 100%; padding: 8px; margin-top: 5px;">
                 </div>
-
-                <div class="hero-wheel">
-
-                    <div class="wheel-outer">
-                        <div class="wheel-inner">
-                            <span>7</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- CREDITOS -->
-            <section class="credit-card">
-
-                <div class="credit-icon">◈</div>
-
-                <div class="credit-info">
-                    <span>CRÉDITOS</span>
-                    <strong id="creditBalance">0</strong>
-                </div>
-
-                <button
-                    class="small-button"
-                    type="button"
-                    onclick="location.href='login.html'"
-                >
-                    INGRESAR
+                <button type="submit" style="width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Iniciar Sesión
                 </button>
-
-            </section>
-
-
-            <!-- JUEGOS DESTACADOS -->
-            <section class="section">
-
-                <div class="section-heading">
-
-                    <div>
-                        <span class="section-kicker">
-                            DESTACADOS
-                        </span>
-
-                        <h2>
-                            Juegos populares
-                        </h2>
-                    </div>
-
-                    <button
-                        class="text-button"
-                        type="button"
-                        onclick="location.href='games/index.html'"
-                    >
-                        VER TODOS
-                    </button>
-
-                </div>
-
-
-                <div class="games-grid">
-
-                    <article
-                        class="game-card game-slot"
-                        onclick="location.href='games/slots.html'"
-                    >
-
-                        <div class="game-art">
-
-                            <span class="game-badge">
-                                SLOT
-                            </span>
-
-                            <div class="slot-symbols">
-                                <span>7</span>
-                                <span>♠</span>
-                                <span>7</span>
-                            </div>
-
-                        </div>
-
-                        <div class="game-info">
-                            <h3>Hot 777</h3>
-                            <span>Tragamonedas clásica</span>
-                        </div>
-
-                    </article>
-
-
-                    <article
-                        class="game-card game-fruit"
-                        onclick="location.href='games/slots.html'"
-                    >
-
-                        <div class="game-art">
-
-                            <span class="game-badge">
-                                SLOT
-                            </span>
-
-                            <div class="fruit-symbols">
-                                <span>🍒</span>
-                                <span>🍋</span>
-                                <span>🍒</span>
-                            </div>
-
-                        </div>
-
-                        <div class="game-info">
-                            <h3>Fruit Classic</h3>
-                            <span>Clásico de frutas</span>
-                        </div>
-
-                    </article>
-
-
-                    <article
-                        class="game-card game-roulette"
-                        onclick="location.href='games/roulette.html'"
-                    >
-
-                        <div class="game-art">
-
-                            <span class="game-badge">
-                                RULETA
-                            </span>
-
-                            <div class="roulette-mini">
-                                <div class="roulette-center">
-                                    0
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="game-info">
-                            <h3>Golden Roulette</h3>
-                            <span>Ruleta europea</span>
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- CATEGORIAS -->
-            <section class="section">
-
-                <div class="section-heading">
-
-                    <div>
-                        <span class="section-kicker">
-                            EXPLORAR
-                        </span>
-
-                        <h2>
-                            Categorías
-                        </h2>
-                    </div>
-
-                </div>
-
-
-                <div class="categories">
-
-                    <button
-                        type="button"
-                        onclick="location.href='games/slots.html'"
-                    >
-                        <span>🎰</span>
-                        <strong>Tragamonedas</strong>
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="location.href='games/roulette.html'"
-                    >
-                        <span>🎡</span>
-                        <strong>Ruleta</strong>
-                    </button>
-
-                    <button type="button">
-                        <span>🃏</span>
-                        <strong>Cartas</strong>
-                    </button>
-
-                    <button type="button">
-                        <span>🎲</span>
-                        <strong>Dados</strong>
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- AVISO -->
-            <section class="responsible-card">
-
-                <div class="responsible-icon">
-                    !
-                </div>
-
-                <div>
-                    <strong>Juego responsable</strong>
-
-                    <p>
-                        Esta plataforma utiliza créditos virtuales.
-                        Jugá de forma responsable.
-                    </p>
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <!-- NAVEGACION -->
-        <nav class="bottom-nav">
-
-            <button class="nav-item active" type="button">
-                <span>⌂</span>
-                <small>Inicio</small>
-            </button>
-
-            <button
-                class="nav-item"
-                type="button"
-                onclick="location.href='games/index.html'"
-            >
-                <span>♣</span>
-                <small>Juegos</small>
-            </button>
-
-            <button
-                class="nav-item"
-                type="button"
-                onclick="location.href='login.html'"
-            >
-                <span>◈</span>
-                <small>Billetera</small>
-            </button>
-
-            <button
-                class="nav-item"
-                type="button"
-                onclick="location.href='login.html'"
-            >
-                <span>♙</span>
-                <small>Cuenta</small>
-            </button>
-
-        </nav>
-
+            </form>
+            <div id="login-message" style="margin-top: 15px; text-align: center;"></div>
+        </div>
     </div>
 
-    <!-- ✅ SUPABASE CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- ✅ CONFIGURACIÓN DE SUPABASE -->
-    <script src="js/supabase-config.js"></script>
-    
-    <!-- TU CÓDIGO ORIGINAL -->
-    <script src="js/app.js"></script>
+    <!-- 2. Panel de Usuario Normal -->
+    <div id="user-panel">
+        <div style="max-width: 600px; margin: 50px auto; padding: 20px;">
+            <h2>👤 Panel de Usuario</h2>
+            <p><strong>Email:</strong> <span id="user-email"></span></p>
+            <p><strong>Balance:</strong> $<span id="user-balance"></span></p>
+            <button onclick="handleLogout()" style="padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
 
+    <!-- 3. Panel de Administrador -->
+    <div id="admin-panel">
+        <div style="max-width: 1000px; margin: 50px auto; padding: 20px;">
+            <h2>⚙️ Panel de Administrador</h2>
+            <p><strong>Admin:</strong> <span id="admin-email"></span></p>
+            <button onclick="handleLogout()" style="padding: 10px 20px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 20px;">
+                Cerrar Sesión
+            </button>
+            
+            <h3>📊 Usuarios Registrados</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #f0f0f0;">
+                        <th style="padding: 10px; border: 1px solid #ddd;">Email</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Balance</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Rol</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="users-table-body">
+                    <!-- Se llenará dinámicamente con JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/main.js"></script>
 </body>
-                        </html>
-                        
+    </html>
+    

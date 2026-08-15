@@ -3,29 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Proyecto</title>
-    <!-- Carga de Supabase desde CDN oficial -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Casino - Sistema de Administración</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="app">
-        <h1>Cargando sistema...</h1>
+    <!-- PANTALLA DE LOGIN -->
+    <div id="login-section">
+        <div class="login-container">
+            <h1>🎰 Casino Login</h1>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+            </form>
+            <p id="login-error" class="error"></p>
+        </div>
     </div>
 
-    <!-- Carga de tus scripts -->
+    <!-- PANEL DE ADMINISTRADOR -->
+    <div id="admin-section" style="display: none;">
+        <div class="panel-container">
+            <div class="header">
+                <h1>🔧 Panel de Administrador</h1>
+                <button id="logout-admin">Cerrar Sesión</button>
+            </div>
+            
+            <div class="card">
+                <h2>Crear Nuevo Usuario</h2>
+                <form id="create-user-form">
+                    <input type="email" id="new-email" placeholder="Email del usuario" required>
+                    <input type="password" id="new-password" placeholder="Contraseña" required>
+                    <select id="new-role" required>
+                        <option value="">Seleccionar rol...</option>
+                        <option value="user">Usuario</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <button type="submit">Crear Usuario</button>
+                </form>
+                <p id="create-user-message"></p>
+            </div>
+
+            <div class="card">
+                <h2>Usuarios Registrados</h2>
+                <div id="users-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL DE USUARIO -->
+    <div id="user-section" style="display: none;">
+        <div class="panel-container">
+            <div class="header">
+                <h1>🎰 Panel de Usuario</h1>
+                <button id="logout-user">Cerrar Sesión</button>
+            </div>
+            
+            <div class="card">
+                <h2>Bienvenido</h2>
+                <p id="user-email"></p>
+                <p>Tu panel de casino estará disponible próximamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-config.js"></script>
     <script src="js/main.js"></script>
-    
-    <script>
-        // Verificación rápida de carga
-        window.addEventListener('load', () => {
-            if (typeof supabase === 'undefined') {
-                document.getElementById('app').innerHTML = '<h2 style="color:red;">Error: No se pudo cargar Supabase</h2>';
-            } else {
-                console.log("Sistema cargado correctamente");
-            }
-        });
-    </script>
+    <script src="js/admin.js"></script>
+    <script src="js/user.js"></script>
 </body>
-</html>
+        </html>
+        

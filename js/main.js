@@ -1,161 +1,120 @@
-// js/main.js
-
+// Estado de la aplicación
 let currentUser = null;
+let currentRole = null;
 
-// Verificar sesión al cargar la página
+// Elementos del DOM
+const loginSection = document.getElementById('login-section');
+const adminSection = document.getElementById('admin-section');
+const userSection = document.getElementById('user-section');
+const loginForm = document.getElementById('login-form');
+const loginError = document.getElementById('login-error');
+
+// Verificar sesión al cargar
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🔍 Verificando sesión...');
+    await checkSession();
+});
+
+// Verificar sesión activa
 async function checkSession() {
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (session) {
-        await loadUserData(session.user.id);
-    } else {
-        showLoginForm();
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (session) {
+            console.log('✅ Sesión activa encontrada');
+            currentUser = session.user;
+            await loadUserRole();
+        } else {
+            console.log('❌ No hay sesión activa');
+            showLogin();
+        }
+    } catch (error) {
+        console.error('Error al verificar sesión:', error);
+        showLogin();
     }
 }
 
-// Cargar datos del usuario desde game_users
-async function loadUserData(userId) {
+// Cargar rol del usuario desde game_users
+async function loadUserRole() {
     try {
         const { data, error } = await supabase
             .from('game_users')
-            .select('*')
-            .eq('id', userId)
+            .select('role')
+            .eq('id', currentUser.id)
             .single();
-        
+
         if (error) throw error;
+
+        currentRole = data.role;
+        console.log(`👤 Usuario con rol: ${currentRole}`);
         
-        currentUser = data;
-        
-        // Verificar si es administrador
-        if (currentUser.role === 'admin') {
+        if (currentRole === 'admin') {
             showAdminPanel();
         } else {
             showUserPanel();
         }
-        
     } catch (error) {
-        console.error('Error cargando datos del usuario:', error);
-        showLoginForm();
+        console.error('Error al cargar rol:', error);
+        loginError.textContent = 'Error: Usuario no registrado en la base de datos';
+        await supabase.auth.signOut();
+        showLogin();
     }
 }
 
-// Mostrar formulario de login
-function showLoginForm() {
-    document.getElementById('login-section').style.display = 'block';
-    document.getElementById('user-panel').style.display = 'none';
-    document.getElementById('admin-panel').style.display = 'none';
-}
+// Manejar login
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    loginError.textContent = '';
 
-// Mostrar panel de usuario normal
-function showUserPanel() {
-    document.getElementById('login-section').style.display = 'none';
-    document.getElementById('user-panel').style.display = 'block';
-    document.getElementById('admin-panel').style.display = 'none';
-    
-    document.getElementById('user-email').textContent = currentUser.email || 'Usuario';
-    document.getElementById('user-balance').textContent = currentUser.balance || 0;
-}
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-// Mostrar panel de administrador
-function showAdminPanel() {
-    document.getElementById('login-section').style.display = 'none';
-    document.getElementById('user-panel').style.display = 'none';
-    document.getElementById('admin-panel').style.display = 'block';
-    
-    document.getElementById('admin-email').textContent = currentUser.email || 'Administrador';
-    loadAllUsers();
-}
-
-// Login
-async function handleLogin(event) {
-    event.preventDefault();
-    
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    const messageDiv = document.getElementById('login-message');
-    
     try {
+        console.log('🔐 Intentando login...');
         const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password
+            email,
+            password
         });
-        
+
         if (error) throw error;
-        
-        await loadUserData(data.user.id);
-        
+
+        currentUser = data.user;
+        console.log('✅ Login exitoso');
+        await loadUserRole();
+
     } catch (error) {
-        messageDiv.textContent = '❌ Error: ' + error.message;
-        messageDiv.style.color = 'red';
+        console.error('Error en login:', error);
+        loginError.textContent = error.message || 'Credenciales incorrectas';
     }
+});
+
+// Mostrar secciones
+function showLogin() {
+    loginSection.style.display = 'block';
+    adminSection.style.display = 'none';
+    userSection.style.display = 'none';
 }
 
-// Logout
-async function handleLogout() {
+function showAdminPanel() {
+    loginSection.style.display = 'none';
+    adminSection.style.display = 'block';
+    userSection.style.display = 'none';
+    if (typeof loadUsers === 'function') loadUsers();
+}
+
+function showUserPanel() {
+    loginSection.style.display = 'none';
+    adminSection.style.display = 'none';
+    userSection.style.display = 'block';
+    document.getElementById('user-email').textContent = `Email: ${currentUser.email}`;
+}
+
+// Cerrar sesión (usado por admin.js y user.js)
+async function logout() {
     await supabase.auth.signOut();
     currentUser = null;
-    showLoginForm();
-}
-
-// Cargar todos los usuarios (solo admin)
-async function loadAllUsers() {
-    try {
-        const { data, error } = await supabase
-            .from('game_users')
-            .select('*')
-            .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        
-        displayUsersTable(data);
-        
-    } catch (error) {
-        console.error('Error cargando usuarios:', error);
-    }
-}
-
-// Mostrar tabla de usuarios
-function displayUsersTable(users) {
-    const tbody = document.getElementById('users-table-body');
-    tbody.innerHTML = '';
+    currentRole = null;
+    showLogin();
+    console.log('👋 Sesión cerrada');
+            }
     
-    users.forEach(user => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${user.email || 'N/A'}</td>
-            <td>${user.username || 'N/A'}</td>
-            <td>${user.balance || 0}</td>
-            <td>${user.role || 'user'}</td>
-            <td>
-                <button onclick="editUserBalance('${user.id}', ${user.balance || 0})">Editar Balance</button>
-            </td>
-        `;
-        tbody.appendChild(row);
-    });
-}
-
-// Editar balance de usuario
-async function editUserBalance(userId, currentBalance) {
-    const newBalance = prompt('Nuevo balance para el usuario:', currentBalance);
-    
-    if (newBalance === null) return;
-    
-    try {
-        const { error } = await supabase
-            .from('game_users')
-            .update({ balance: parseFloat(newBalance) })
-            .eq('id', userId);
-        
-        if (error) throw error;
-        
-        alert('✅ Balance actualizado correctamente');
-        loadAllUsers();
-        
-    } catch (error) {
-        alert('❌ Error: ' + error.message);
-    }
-}
-
-// Inicializar cuando carga la página
-window.addEventListener('DOMContentLoaded', checkSession);
-      

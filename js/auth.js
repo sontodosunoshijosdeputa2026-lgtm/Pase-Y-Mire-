@@ -2,79 +2,198 @@
 
     "use strict";
 
+
     function getClient() {
+
         return window.supabaseClient || null;
+
     }
 
-    function showMessage(text, type) {
+
+    function showMessage(
+        text,
+        type = ""
+    ) {
 
         const message =
-            document.getElementById("authMessage");
+            document.getElementById(
+                "authMessage"
+            );
 
         if (!message) return;
 
-        message.textContent = text;
+        message.textContent =
+            text;
+
         message.className =
-            "auth-message " + (type || "");
+            "auth-message" +
+            (
+                type
+                    ? " " + type
+                    : ""
+            );
 
     }
 
-    async function login(email, password) {
 
-        const client = getClient();
+    async function login(
+        email,
+        password
+    ) {
+
+        const client =
+            getClient();
 
         if (!client) {
+
             throw new Error(
-                "Supabase no está configurado."
+                "No se pudo inicializar Supabase. Recargá la página e intentá nuevamente."
             );
+
         }
 
-        const { data, error } =
-            await client.auth.signInWithPassword({
-                email: email.trim(),
-                password
-            });
+
+        const cleanEmail =
+            String(email || "")
+                .trim()
+                .toLowerCase();
+
+
+        if (!cleanEmail) {
+
+            throw new Error(
+                "Ingresá tu email."
+            );
+
+        }
+
+
+        if (!password) {
+
+            throw new Error(
+                "Ingresá tu contraseña."
+            );
+
+        }
+
+
+        const {
+            data,
+            error
+        } =
+            await client.auth
+                .signInWithPassword({
+
+                    email:
+                        cleanEmail,
+
+                    password:
+                        password
+
+                });
+
 
         if (error) {
+
             throw error;
+
         }
+
+
+        if (
+            !data ||
+            !data.user ||
+            !data.session
+        ) {
+
+            throw new Error(
+                "Supabase no devolvió una sesión válida."
+            );
+
+        }
+
 
         return data;
 
     }
 
-    async function getProfile(userId) {
 
-        const client = getClient();
+    async function getProfile(
+        userId
+    ) {
 
-        if (!client) return null;
+        const client =
+            getClient();
 
-        const { data, error } =
+        if (
+            !client ||
+            !userId
+        ) {
+
+            return null;
+
+        }
+
+
+        const {
+            data,
+            error
+        } =
             await client
                 .from("admin_profiles")
                 .select(
                     "user_id, admin_level, is_active"
                 )
-                .eq("user_id", userId)
+                .eq(
+                    "user_id",
+                    userId
+                )
                 .maybeSingle();
 
+
         if (error) {
+
             console.error(
-                "Error consultando perfil:",
+                "Error consultando perfil administrativo:",
                 error
             );
 
             return null;
+
         }
 
-        return data;
+
+        return data || null;
 
     }
 
-    async function redirectAfterLogin(user) {
+
+    async function redirectAfterLogin(
+        user
+    ) {
+
+        if (
+            !user ||
+            !user.id
+        ) {
+
+            throw new Error(
+                "No se pudo identificar el usuario."
+            );
+
+        }
+
 
         const profile =
-            await getProfile(user.id);
+            await getProfile(
+                user.id
+            );
+
+
+        /*
+         * Cualquier cuenta administrativa
+         * activa entra al panel.
+         */
 
         if (
             profile &&
@@ -88,10 +207,17 @@
 
         }
 
+
+        /*
+         * Las cuentas normales entran
+         * al área de juegos.
+         */
+
         window.location.href =
             "games/index.html";
 
     }
+
 
     document.addEventListener(
         "DOMContentLoaded",
@@ -102,25 +228,45 @@
                     "loginForm"
                 );
 
-            if (!loginForm) return;
+
+            if (!loginForm) {
+
+                return;
+
+            }
+
 
             loginForm.addEventListener(
                 "submit",
-                async function (event) {
+                async function (
+                    event
+                ) {
 
                     event.preventDefault();
 
+
                     const email =
                         document
-                            .getElementById("email")
-                            ?.value || "";
+                            .getElementById(
+                                "email"
+                            )
+                            ?.value ||
+                        "";
+
 
                     const password =
                         document
-                            .getElementById("password")
-                            ?.value || "";
+                            .getElementById(
+                                "password"
+                            )
+                            ?.value ||
+                        "";
 
-                    if (!email || !password) {
+
+                    if (
+                        !email.trim() ||
+                        !password
+                    ) {
 
                         showMessage(
                             "Completá email y contraseña.",
@@ -131,19 +277,33 @@
 
                     }
 
+
                     const button =
                         loginForm.querySelector(
                             "button[type='submit']"
                         );
 
+
                     if (button) {
-                        button.disabled = true;
+
+                        button.disabled =
+                            true;
+
+                        button.dataset
+                            .originalText =
+                            button.textContent;
+
+                        button.textContent =
+                            "INGRESANDO...";
+
                     }
+
 
                     showMessage(
                         "Verificando acceso...",
                         ""
                     );
+
 
                     try {
 
@@ -153,25 +313,59 @@
                                 password
                             );
 
+
+                        showMessage(
+                            "Acceso correcto. Ingresando...",
+                            "success"
+                        );
+
+
                         await redirectAfterLogin(
                             result.user
                         );
 
-                    } catch (error) {
+                    } catch (
+                        error
+                    ) {
 
                         console.error(
                             "Error de login:",
                             error
                         );
 
+
+                        let text =
+                            error?.message ||
+                            "No se pudo iniciar sesión.";
+
+
+                        if (
+                            error?.message ===
+                            "Invalid login credentials"
+                        ) {
+
+                            text =
+                                "Email o contraseña incorrectos.";
+
+                        }
+
+
                         showMessage(
-                            error.message ||
-                            "No se pudo iniciar sesión.",
+                            text,
                             "error"
                         );
 
+
                         if (button) {
-                            button.disabled = false;
+
+                            button.disabled =
+                                false;
+
+                            button.textContent =
+                                button.dataset
+                                    .originalText ||
+                                "INGRESAR";
+
                         }
 
                     }
@@ -182,10 +376,16 @@
         }
     );
 
+
     window.RoyalAuth = {
+
         login,
+
         getProfile,
+
         redirectAfterLogin
+
     };
+
 
 })();
